@@ -1,18 +1,21 @@
 const myPromise = new Promise((resolve, reject) => {
 
-    let condition = true;   // Change to false to test rejection
+    let condition = true;   // Change to false to test error
 
     if (condition) {
-        resolve('Success!');
+        resolve("Success!");
     } else {
-        reject('Failure!');
+        reject("Failure!");
     }
 });
 
-myPromise
-    .then((result) => {
+async function myFunction() {
+    try {
+        const result = await myPromise;
         console.log(result);
-    })
-    .catch((error) => {
+    } catch (error) {
         console.log(error);
-    });
+    }
+}
+
+myFunction();
